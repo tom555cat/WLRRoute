@@ -14,14 +14,18 @@
  */
 @interface WLRRouteMatcher : NSObject
 /**
-    a url matched regex pattern string.
+    a url matched regex pattern string. URL匹配表达式
  */
 @property(nonatomic,copy)NSString * routeExpressionPattern;
 /**
-    original route url matched pattern string
+    original route url matched pattern string。
  */
 @property(nonatomic,copy)NSString * originalRouteExpression;
+
+
 +(instancetype)matcherWithRouteExpression:(NSString *)expression;
+
+
 /**
     If a NSURL object matched with routeExpressionPattern,return a WLRRouteRequest object or,otherwise return nil.
 

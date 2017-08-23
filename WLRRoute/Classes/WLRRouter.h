@@ -24,6 +24,7 @@
  @param route url的路由表达式，支持正则表达式的分组，例如app://login/:phone({0,9+})是一个表达式，:phone代表该路径值对应的key,可以在WLRRouteRequest对象中的routeParameters中获取
  */
 -(void)registerBlock:(WLRRouteRequest *(^)(WLRRouteRequest * request))routeHandlerBlock forRoute:(NSString *)route;
+
 /**
  注册一个route表达式并与一个block处理相关联
  
@@ -39,7 +40,9 @@
  @return 是否可以handle
  */
 -(BOOL)canHandleWithURL:(NSURL *)url;
+
 -(void)setObject:(id)obj forKeyedSubscript:(NSString *)key;
+
 -(id)objectForKeyedSubscript:(NSString *)key;
 
 /**
@@ -52,6 +55,8 @@
  @return 是否能够handle
  */
 -(BOOL)handleURL:(NSURL *)URL primitiveParameters:(NSDictionary *)primitiveParameters targetCallBack:(void(^)(NSError *, id responseObject))targetCallBack withCompletionBlock:(void(^)(BOOL handled, NSError *error))completionBlock;
+
 -(void)addMiddleware:(id<WLRRouteMiddleware>)middleware;
+
 -(void)removeMiddleware:(id<WLRRouteMiddleware>)middleware;
 @end
